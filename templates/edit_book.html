@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+<title class="content">Edit Book</title>
+{% endblock %}
+
+{% block header %} 
+Edit Book 
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <form action="/edit/{{ book.id }}" method="POST">
+        <div class="form-group">
+            <label for="title">Book Name:</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" value="{{ book.author }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="genre">Book Genre:</label>
+            <input type="text" id="genre" name="genre" value="{{ book.genre }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="{{ book.price }}" step="0.01" required>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+</div>
+{% endblock %}

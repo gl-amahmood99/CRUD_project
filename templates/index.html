@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block head %}
+<title class="content">Home Page</title>
+{% endblock %}
+
+{% block header %} 
+Home Page 
+{% endblock %}
+
+{% block body %}
+<div class="table-container">
+    {% if books | length < 1 %}
+    <h1>There are no books. Please add books.</h1>
+    {% else %}
+    <table>
+        <thead>
+        <tr>
+            <th>S No.</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Book Genre</th>
+            <th>Book Price Rs.</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                <a href="/delete/{{ book.id }}">Delete</a>
+                <a href="/edit/{{ book.id }}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
